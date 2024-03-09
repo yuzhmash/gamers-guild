@@ -1,38 +1,36 @@
 import "./mainContent.sass"
 
-import img from "./7wonder.png"
-
-const MainContent = ({title}) => {
+const MainContent = ({mainTitle, img, price, title}) => {
     return (
-        <main class="main">
-        <div class="container">
-            <div class="main__title">{title}</div>
-            <div class="main__blocks">
-                <View title={title} />
+        <main className="main">
+            <div className="container">
+                <h2 className="main__title">{mainTitle}</h2>
+                <div className="main__blocks">
+                    <View img={img} price={price} title={title} />
+                </div>
             </div>
-        </div>
-    </main>
+        </main>
     )
 }
 
-const View = ({title}) => {
+const View = ({img, price, title}) => {
     const arr = [1, 2, 3, 4, 5, 6, 7, 8];
     return (
         <>
         {
-            arr.map(elem => {
+            arr.map((elem, i) => {
                 return (
-                    <div class="main__block">
-                        <div class="main__block_img">
+                    <div key={i} className="main__block">
+                        <div className="main__block_img">
                             <img src={img} alt="wonder img"></img>
                         </div>
-                        <div class="main__wrapper">
+                        <div className="main__wrapper">
                             <div>
-                                <div class="main__block_title">7 WONDERS</div>
-                                <div class="main__block_price">489 kr</div>
+                                <div className="main__block_title">{title}</div>
+                                <div className="main__block_price">{price}</div>
                             </div>
                             <div>
-                                <div class="main__block_btn">recension</div>
+                                <div className="main__block_btn">recension</div>
                             </div>
                         </div>
                     </div>

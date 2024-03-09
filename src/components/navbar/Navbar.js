@@ -1,23 +1,29 @@
-import { Link, NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 
 import "./navbar.sass"
 
-const Navbar = ({onClicked}) => {
+const Navbar = () => {
 
-    // const arrBtns = ["start", "brädspel", "godis", "lek", "pussel", "kontakt", "om gamers guild"]
-    // const btns = arrBtns.map(elem => <li><NavLink>{elem}</NavLink></li>)
+    const arrBtns = ["/brädspel", "/godis", "/lek", "/pussel", "/gamesworkshop", "/kontakt"]
+    const loc = useLocation().pathname
+    const location = /\/(br%C3%A4dspel|godis|lek|pussel|gamesworkshop|kontakt|$)/.test(useLocation().pathname)
+
+    useEffect(() => {
+        document.body.style.backgroundColor = location ? "black" : "white"
+    }, [loc])
+
+    const btns = arrBtns.map((elem, i) => {
+        return <li key={i+1}><NavLink end to={elem} className={location ? "white" : "black"} >
+            {elem !== "gamesworkshop" ? elem.replace(/\//,"") : "games workshop"}</NavLink></li>
+    })
 
     return (
         <div className="container" >
             <nav className="header__nav">
                 <ul>
-                    <li><NavLink end to="/" >start</NavLink></li>
-                    <li><NavLink end to="/brädspel">brädspel</NavLink></li>
-                    <li><NavLink end to="/godis">godis</NavLink></li>
-                    <li><NavLink end to="/lek">lek</NavLink></li>
-                    <li><NavLink end to="/pussel">pussel</NavLink></li>
-                    <li><NavLink end to="/kontakt">kontakt</NavLink></li>
-                    <li><NavLink end to="/omgamersguild">om gamers guild</NavLink></li>
+                    <li key={0} ><NavLink end to="/" className={location ? "white" : "black"} >start</NavLink></li>
+                    {btns}
                 </ul>
             </nav>
         </div>

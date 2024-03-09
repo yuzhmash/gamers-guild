@@ -1,8 +1,18 @@
-
+import { useLocation } from "react-router-dom"
 
 import "./footer.sass"
 
 const Footer = ({style}) => {
+    const location = /\/(br%C3%A4dspel|godis|lek|pussel|gamesworkshop|kontakt|$)/.test(useLocation().pathname)
+
+    return (
+        <>
+            {location ? <View style={style} /> : null}
+        </>
+    )
+}
+
+const View = ({style}) => {
     return (
         <footer className="footer" style={style} >
             <div className="container wrapper">

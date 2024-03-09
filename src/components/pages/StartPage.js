@@ -1,7 +1,7 @@
 import Header from "../header/Header";
 import AboutUs from "../aboutUs/AboutUs";
 
-const StartContent = () => {
+const StartPage = () => {
     return (
         <>
             <Header/>
@@ -10,4 +10,4 @@ const StartContent = () => {
     )
 }
 
-export default StartContent;
+export default StartPage;

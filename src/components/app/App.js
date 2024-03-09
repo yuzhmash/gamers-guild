@@ -1,33 +1,27 @@
-import {BrowserRouter as Router, Route, Routes, useLocation} from "react-router-dom"
-import { useEffect, useState } from "react";
+import {Route, Routes, useLocation} from "react-router-dom";
 
-import {StartContent} from "../pages"
-
+import {StartPage, Error, BrädspelPage, Godis, Lek, Pussel, GamesWorkshop, Kontakt} from "../pages"
 import Footer from "../footer/Footer";
-import MainContent from "../mainContent/MainContent";
-import Navbar from "../navbar/Navbar"
+import Navbar from "../navbar/Navbar";
 
 const App = () => {
-    // const location = useLocation();
-
-    // // Log the current location object to the console
-    // console.log('Current Location:', location);
     return (
-            <div>
-                <Navbar/>
-                <main>
-                    <Routes >
-                        <Route path="/" element={<StartContent/>}/>
-                        <Route path="/brädspel" element={<MainContent title={"brädspel"} />}/>
-                        <Route path="/godis" element={<MainContent title={"godis"} />}/>
-                        <Route path="/lek" element={<MainContent title={"lek"} />}/>
-                        <Route path="/pussel" element={<MainContent title={"pussel"} />}/>
-                        <Route path="/kontakt" element={<Footer style={{"borderTop": "none", "backgroundColor": "#000"}} title={"kontakt"} />}/>
-                        <Route path="/omgamersguild" element={<MainContent title={"om gamers guild"} />}/>
-                    </Routes>
-                </main>
-                {useLocation().pathname === "/kontakt" ? null : <Footer/>}
-            </div>
+        <>
+            <Navbar/>
+            <main>
+                <Routes >
+                    <Route path="/" element={<StartPage/>}/>
+                    <Route path="/brädspel" element={<BrädspelPage/>}/>
+                    <Route path="/godis" element={<Godis/>}/>
+                    <Route path="/lek" element={<Lek/>}/>
+                    <Route path="/pussel" element={<Pussel/>}/>
+                    <Route path="/gamesworkshop" element={<GamesWorkshop/>}/>
+                    <Route path="/kontakt" element={<Kontakt/>}/>
+                    <Route path="*" element={<Error/>}/>
+                </Routes>
+            </main>
+            {useLocation().pathname === "/kontakt" ? null : <Footer/>}
+        </>
     )
 }
 

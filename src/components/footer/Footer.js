@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom"
 
+import { Form } from "formik"
+
 import "./footer.sass"
 
 const Footer = ({style}) => {
@@ -20,7 +22,7 @@ const View = ({style}) => {
                     <div className="footer__title">
                         kontacta oss
                     </div>
-                    <form className="form"> 
+                    <form className="form_footer"> 
                         <input placeholder="namn" type="name"/>
                         <input placeholder="E-mail" type="email"/>
                         <textarea placeholder="meddelande" name="meddelande"></textarea>

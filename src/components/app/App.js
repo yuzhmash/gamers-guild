@@ -3,6 +3,7 @@ import {Route, Routes, useLocation} from "react-router-dom";
 import {StartPage, Error, BrädspelPage, Godis, Lek, Pussel, GamesWorkshop, Kontakt} from "../pages"
 import Footer from "../footer/Footer";
 import Navbar from "../navbar/Navbar";
+import Form from "../form/Form";
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                 </Routes>
             </main>
             {useLocation().pathname === "/kontakt" ? null : <Footer/>}
+            <Form/>
         </>
     )
 }
